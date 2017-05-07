@@ -1,0 +1,66 @@
+*curl.vim* Run a curl config file from Vim.
+
+
+                         _       _           ~
+                        | |     (_)          ~
+          ___ _   _ _ __| |_   ___ _ __ ___  ~
+         / __| | | | '__| \ \ / / | '_ ` _ \ ~
+        | (__| |_| | |  | |\ V /| | | | | | |~
+         \___|\__,_|_|  |_(_)_/ |_|_| |_| |_|~
+                                             ~
+                                             ~
+
+
+================================================================================
+CONTENTS                                                   *curlvim-content*
+
+    1. Usage ............ |curlvim-usage|
+    2. Configuration .... |curlvim-configuration|
+    3. License .......... |curlvim-license|
+    4. Contributing ..... |curlvim-contributing|
+
+================================================================================
+USAGE                                                        *curlvim-usage*
+
+Initially, you need to call the plugin directly (but you can setup mappings,
+see |curlvim-configuration| below): >
+
+  :call curl#Process()
+
+This will use the current file (with some modifications) as a config file for
+the curl utility. You can read more here: <https://ec.haxx.se/cmdline-configfile.html>.
+
+The part below the separator (by default "--- response ---") will be removed,
+and the new response will be inserted instead.
+
+Note that before running the curl, the file will be automatically saved.
+
+================================================================================
+CONFIGURATION                                        *curlvim-configuration*
+
+You need to define the mapping/command you want to use for this plugin, none is
+provided by default. E.g. >
+
+  command! Curl call curl#Process()
+
+  nnoremap <Leader>c call curl#Process()<CR>
+
+You can also provide a different separator than the one by default: >
+
+  let g:curl_vim_separator = "###"
+
+================================================================================
+LICENSE                                                    *curlvim-license*
+
+Author: Victor Haffreingue <http://nobe4.fr>
+License: MIT (see <https://github.com/nobe4/curl.vim/blob/master/LICENSE>)
+
+================================================================================
+CONTRIBUTING                                          *curlvim-contributing*
+
+You can find the github repository here :
+    <https://github.com/nobe4/curl.vim>
+
+Feel free to open an issue or a PR
+
+" vim:tw=78:et:ft=help:norl:
